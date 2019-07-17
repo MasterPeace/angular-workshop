@@ -141,3 +141,10 @@ For this demo we will go with the first option and create a proxy file.
 1. run your new command: `yarn start:proxy`
     * don't forget to remove the base of the url from  your http get call (`https://api.nasa.gov`)
 
+## Additional exploration options
+
+* Add error handling using `rxjs/operators`, specifically: `catchError`
+* Add loading spinner logic during fetch from nasa using pipe operators such as `tap`
+ * Add a delay to the loading so the spinner stays up longer by using pipe-able operators such as `delay`
+* Subscribe directly in the dom using `async` pipe
+* create sub-lazy loading routes
