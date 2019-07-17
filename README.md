@@ -59,7 +59,7 @@ As your project grows you will have more reusable code. To avoid having to do lo
 ```javascript
     "paths": {
       "@env/*": ["environments/*"],
-      "common/*": ["app/common/*"]
+      "common/*": ["src/app/common/*"]
     }
 ```
     * these paths are relative to `baseUrl`
