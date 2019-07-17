@@ -101,3 +101,43 @@ Let's create a loading spinner
 1. Add the loading-spinner component to the module's export
 1. Add an index.ts file to the loading-spinner folder
 1. Add: `export * from './loading-spinner.module';` to the index.ts file 
+
+## 4 - Load Data From NASA
+
+1. Get yourself an API Key: https://api.nasa.gov/index.html
+1. add the HttpClient to constructor imports
+1. make get call using absolute full URL to: `https://api.nasa.gov/planetary/apod?api_key=<your-api-key>`
+
+### Let's Pretend that NASA is your backend and the api_key is your user's JWT Token
+Abstract the http call into custom service so that you do not have to always add the API Key to every call
+1. Create `services` folder under `common`
+1. create a `base-http` service: `ng g s base-http`
+    * ng - angular cli
+    * g - generate
+    * s - service
+1. Inject the HTTP Client into the service
+1. Wrap "all" calls that we might make, in this case just "get" with a function: `public get(url: string, params?: HttpParams): Observable<any> { ...`
+1. Add a stub authentication function: `private getAuthorization(): string`
+1. inside the `get` function check to see if params were passed in and then add to, or create params, that receive `params = params.set('api_key', this.getAuthorization())`
+1. return the actual observable `return this.httpClient.get(url, params);` 
+
+### Taking it further - let's proxy to your backend like a real service
+Normally you don't want to hardcode your server's URL in the UI code. While there are multiple ways to handle this the two best options are:
+1. don't
+1. use envrionment.ts
+For this demo we will go with the first option and create a proxy file.
+1. create a proxy file at the root of the project: `proxy.conf.json`
+1. redirect all calls to "planetary" to your REST server (NASA):
+```
+{
+  "/rest" : {
+      "target": "https://api.nasa.gov",
+      "secure": false
+  }
+}
+
+```
+1. finally create a new run command that makes use of the proxy and add that to your package.json: `"start:proxy": "ng serve --proxy-config proxy.conf.json",`
+1. run your new command: `yarn start:proxy`
+    * don't forget to remove the base of the url from  your http get call (`https://api.nasa.gov`)
+
