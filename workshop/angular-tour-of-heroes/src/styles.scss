@@ -1,4 +1,16 @@
 
+// Begin Bootstrap imports
+@import 'styles/bootstrap-variables';
+/* You can add global styles to this file, and also import other style files */
+// Make Bootstrap Utility Classes and Grid layout available; see: http://getbootstrap.com/docs/4.0/getting-started/theming/
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/tables";
+// Override Bootstrap defaults
+@import 'styles/styles-reset';
+// End Bootstrap imports
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';

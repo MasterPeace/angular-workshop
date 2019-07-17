@@ -1,0 +1,27 @@
+/* Following advice from:
+ * https://medium.com/@tomastrajan/how-to-build-responsive-layouts-with-bootstrap-4-and-angular-6-cfbb108d797b
+ * https://www.amadousall.com/the-good-parts-of-bootstrap-4-you-are-missing-in-your-angular-material-projects/#bootstrapreboot
+ */
+
+ * {
+  &:active,
+  :focus {
+    outline: none !important;
+  }
+}
+
+label {
+  margin-bottom: 0;
+}
+
+
+a:not(.mat-button):not(.mat-raised-button):not(.mat-fab):not(.mat-mini-fab):not([mat-list-item]):not(.mat-stroked-button):not(.mat-flat-button) {
+  color: rgb(63, 81, 181); // TODO: update this to use the mat-primary variable
+}
+// Without this mat-mini-fab buttons on <a> tags with `type="button"` set become square.
+// Once all of those <a> tags have been fixed then this could probably be safely removed or left as a comment.
+// Currently this is most prominent on the search tables with the "add" button
+button, html [type="button"], [type="reset"], [type="submit"] {
+  -webkit-appearance: inherit !important;
+}
+
