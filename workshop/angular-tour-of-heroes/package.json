@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "lint-fix": "ng lint --fix true --type-check true",
+    "prettier": "prettier --single-quote --tab-width 2 --print-width 80 --write \"src/app/**/*.ts\"",
     "format": "yarn run prettier && yarn run lint-fix"
   },
   "private": true,

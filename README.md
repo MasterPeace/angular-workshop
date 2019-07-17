@@ -25,5 +25,6 @@ Install
 1. Add prettier to package.json script commands: `"prettier": "prettier --single-quote --tab-width 2 --print-width 80 --write \"src/app/**/*.ts\""`
 1. Tie the lint rules and prettier together in package.json:
     * `"lint-fix": "ng lint --fix true --type-check true",`
+    * `"prettier": "prettier --single-quote --tab-width 2 --print-width 80 --write \"src/app/**/*.ts\""`
     * `"format": "yarn run prettier && yarn run lint-fix",`
 1. Try your new linter: `yarn format`
