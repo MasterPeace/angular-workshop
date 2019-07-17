@@ -59,7 +59,7 @@ As your project grows you will have more reusable code. To avoid having to do lo
 ```javascript
     "paths": {
       "@env/*": ["environments/*"],
-      "common/*": ["app/common/*"]
+      "common/*": ["src/app/common/*"]
     }
 ```
     * these paths are relative to `baseUrl`
@@ -69,6 +69,35 @@ As your project grows you will have more reusable code. To avoid having to do lo
     * if you don't specify `*` then only things that exposed via `index.ts` exports will be importable using the short url
 1. now for every sub-folder or  module you put in `common` you should create an `index.ts` file that exports those pieces. We'll come back to this later
 
+## Create Your Landing Pages
+1. Clear all the junk out of `app.component.html` except for `<router-outlet></router-outlet>`
+1. (Optional) Create a folder called `pages` to put all of the components that will directly represent routing paths 
+    * I like this as it creates a nice separation from the top of your app that tends to get cluttered with things you want running across the whole site, like user tracking, from everything else. I also prefer deeper folder nesting over larger flat structures. This is also the pattern that Ionic loosely follows. 
+1. `cd` into your directory (`src\app\pages`) and create your first module to hold your new page: `ng g m landing-page --routing`
+    * ng - Angular CLI
+    * g - generate
+    * m - module
+    * --routing - create a lazy loading router module
+1. create a component: `ng g c landing-page`
+1. Add the landing page to the routes file: `{ path: '', component: LandingPageComponent}`
+1. Add the new lazy-loading module and routes to app-routing.module.ts: `{path: '', loadChildren: () => import('./pages/landing-page/landing-page.module').then(mod => mod.LandingPageModule)}`
+1. Add some flair, add a nav-bar. For a quick an easy one use https://material.angular.io/components/toolbar/overview 
 
-
-
+### Sample Common Folder Usage - Add Loading Spinner
+Let's create a loading spinner
+1. In your terminal, navigate to the common directory and start by creating a module to hold our loading spinner: `ng g m loading-spinner`
+    * ng - Angular CLI
+    * g - generate
+    * m - module
+1. add a loading-spinner component: `ng g c loading-spinner`
+    * ng - Angular CLI
+    * g - generate
+    * c - component (component is added to the "nearest" module file)
+1. lookup the Mat Progress Bar from https://material.angular.io to find instructions on how to specify an indefintie loading spinner
+    * don't forget to add the progress bar module to the loading-spinner module
+    * Add the spinner to the dom
+    * Add an ngIf around it
+    * Add a loading boolean as @Input to control the spinner
+1. Add the loading-spinner component to the module's export
+1. Add an index.ts file to the loading-spinner folder
+1. Add: `export * from './loading-spinner.module';` to the index.ts file 
