@@ -69,7 +69,7 @@ As your project grows you will have more reusable code. To avoid having to do lo
     * if you don't specify `*` then only things that exposed via `index.ts` exports will be importable using the short url
 1. now for every sub-folder or  module you put in `common` you should create an `index.ts` file that exports those pieces. We'll come back to this later
 
-## Create Your Landing Pages
+## 3 - Create Your Landing Pages
 1. Clear all the junk out of `app.component.html` except for `<router-outlet></router-outlet>`
 1. (Optional) Create a folder called `pages` to put all of the components that will directly represent routing paths 
     * I like this as it creates a nice separation from the top of your app that tends to get cluttered with things you want running across the whole site, like user tracking, from everything else. I also prefer deeper folder nesting over larger flat structures. This is also the pattern that Ionic loosely follows. 
