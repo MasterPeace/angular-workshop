@@ -10,7 +10,7 @@ Install
 
 ## 1 - Initalize Project
 1. Configure Angular CLI to use Yarn: `ng config --global cli.packageManager yarn`
-1. `ng new angular-tour-of-heroes --commit=false  --inline-style  --prefix=th --routing  --skip-git --skipTests  --style=scss`
+1. `ng new angular-tour-of-heroes --inline-style  --prefix=th --routing  --skip-git --skipTests  --style=scss`
 1. Add Material: `ng add @angular/material` 
     * choose `custom` for theme
     * choose `HammerJS` if you wish to support mobile 
