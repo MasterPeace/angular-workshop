@@ -6,13 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styles: []
 })
 export class LoadingSpinnerComponent implements OnInit {
-
   @Input()
   displaySpinner: boolean;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
